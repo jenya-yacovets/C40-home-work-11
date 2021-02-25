@@ -1,10 +1,7 @@
 package shop;
 
-import java.util.Scanner;
-
 public class SelectAdd implements Select{
     private Shop shop = new Shop();
-    private Scanner scanner = new Scanner(System.in);
 
     public SelectAdd(Shop shop) {
         this.shop = shop;
@@ -19,7 +16,7 @@ public class SelectAdd implements Select{
         int id = Helpers.selectNumber(1, 1000000);
 
         System.out.println("Введите название товара:");
-        String name = scanner.next();
+        String name = Helpers.selectString();
 
         System.out.println("Введите цену товара:");
         int price = Helpers.selectNumber(1, 1000000);

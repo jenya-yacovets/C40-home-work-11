@@ -13,8 +13,8 @@ public class Shop{
     }
 
     private void initShop() {
-        try (ObjectInputStream file = new ObjectInputStream(new FileInputStream("data.out"))) {
-            Map<Integer, Product> list = (LinkedHashMap<Integer, Product>) file.readObject();
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("data.out"))) {
+            Map<Integer, Product> list = (LinkedHashMap<Integer, Product>) ois.readObject();
             productList = list;
         } catch (IOException | ClassNotFoundException e) {
             productList = new LinkedHashMap<>();
@@ -24,8 +24,17 @@ public class Shop{
     public void add(Product product) throws ExceptionDuplicationProduct {
         if(!productList.containsKey(product.getId())) {
             productList.put(product.getId(), product);
+            this.serializable();
         } else {
             throw new ExceptionDuplicationProduct(product.getId());
+        }
+    }
+
+    private void serializable() {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("data.out"))) {
+            oos.writeObject(productList);
+        } catch (IOException e) {
+            System.out.println("!!! При сериализации объекта произошла ошибка !!!");
         }
     }
 

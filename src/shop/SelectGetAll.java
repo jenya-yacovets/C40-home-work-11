@@ -44,11 +44,6 @@ public class SelectGetAll implements Select{
         }
     }
 
-    @Override
-    public String getName() {
-        return "Вывод всех товаров >>>";
-    }
-
     private void sortMenu() {
         System.out.println("----- Выберите метод сортировки -----");
         System.out.println("1 - По возрастанию цены");
@@ -57,5 +52,10 @@ public class SelectGetAll implements Select{
         System.out.println("4 - Сначала самые старые");
         System.out.println("5 - <<< Назад в основное меню");
         System.out.println("0 - Выход");
+    }
+
+    @Override
+    public String getName() {
+        return "Вывод всех товаров >>>";
     }
 }

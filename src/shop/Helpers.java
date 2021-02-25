@@ -22,8 +22,12 @@ public class Helpers {
             if (number >= min && number <= max) {
                 return number;
             } else {
-                System.out.println("Выберите вариант из предложеного. Повторите попытку:");
+                System.out.println("Введите число от " + min + " до " + max + ". Повторите попытку:");
             }
         }
+    }
+
+    public static String selectString() {
+        return scanner.next().trim();
     }
 }
